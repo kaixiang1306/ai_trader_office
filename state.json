@@ -1,10 +1,20 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778087194043,
-  "tickCount": 6,
-  "totalTrades": 5,
+  "lastTickAt": 1778093552074,
+  "tickCount": 7,
+  "totalTrades": 6,
   "priceSource": "coingecko",
   "prices": {
+    "AVAX": 9.58,
+    "BNB": 649.19,
+    "BTC": 81307,
+    "ADA": 0.266135,
+    "DOGE": 0.1128,
+    "ETH": 2344.26,
+    "XRP": 1.42,
+    "SOL": 88.86
+  },
+  "prevPrices": {
     "AVAX": 9.63,
     "BNB": 649.65,
     "BTC": 81622,
@@ -13,16 +23,6 @@
     "ETH": 2358.15,
     "XRP": 1.43,
     "SOL": 89.35
-  },
-  "prevPrices": {
-    "AVAX": 9.59,
-    "BNB": 648.86,
-    "BTC": 81658,
-    "ADA": 0.266891,
-    "DOGE": 0.113179,
-    "ETH": 2359.86,
-    "XRP": 1.43,
-    "SOL": 88.78
   },
   "accounts": {
     "momentum": {
@@ -53,7 +53,7 @@
       "badge": "idle"
     },
     "quant": {
-      "cash": 22566.536806748507,
+      "cash": 15796.575764723955,
       "positions": {
         "BTC": {
           "amount": 0.2195737828903229,
@@ -72,14 +72,14 @@
           "avgPrice": 648.86
         },
         "XRP": {
-          "amount": 6763.197844180371,
-          "avgPrice": 1.43
+          "amount": 11530.77604278921,
+          "avgPrice": 1.4258653448988021
         }
       },
-      "nav": 99903.78494955451,
-      "pnl": -96.21505044549122,
-      "trades": 5,
-      "lastAction": "買入 $9671 XRP @ $1.43",
+      "nav": 99553.02853085518,
+      "pnl": -446.9714691448171,
+      "trades": 6,
+      "lastAction": "買入 $6770 XRP @ $1.42",
       "badge": "bought"
     },
     "contra": {
@@ -93,6 +93,12 @@
     }
   },
   "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $6770 XRP @ $1.42 — 再平衡補倉 XRP，目前 9.6%",
+      "time": "2026-05-06T18:52:32.074Z"
+    },
     {
       "traderId": "quant",
       "type": "buy",
