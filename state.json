@@ -1,10 +1,20 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778080340690,
-  "tickCount": 4,
-  "totalTrades": 3,
+  "lastTickAt": 1778081579043,
+  "tickCount": 5,
+  "totalTrades": 4,
   "priceSource": "coingecko",
   "prices": {
+    "AVAX": 9.59,
+    "BNB": 648.86,
+    "BTC": 81658,
+    "ADA": 0.266891,
+    "DOGE": 0.113179,
+    "ETH": 2359.86,
+    "XRP": 1.43,
+    "SOL": 88.78
+  },
+  "prevPrices": {
     "AVAX": 9.57,
     "BNB": 647.9,
     "BTC": 81502,
@@ -13,16 +23,6 @@
     "ETH": 2359.32,
     "XRP": 1.42,
     "SOL": 88.51
-  },
-  "prevPrices": {
-    "AVAX": 9.65,
-    "BNB": 651.48,
-    "BTC": 81977,
-    "ADA": 0.269182,
-    "DOGE": 0.114892,
-    "ETH": 2385.37,
-    "XRP": 1.43,
-    "SOL": 88.73
   },
   "accounts": {
     "momentum": {
@@ -53,7 +53,7 @@
       "badge": "idle"
     },
     "quant": {
-      "cash": 46054.15674846634,
+      "cash": 32237.909723926437,
       "positions": {
         "BTC": {
           "amount": 0.2195737828903229,
@@ -66,12 +66,16 @@
         "SOL": {
           "amount": 202.75497968064238,
           "avgPrice": 88.51
+        },
+        "BNB": {
+          "amount": 21.293109491323094,
+          "avgPrice": 648.86
         }
       },
-      "nav": 99699.12917518699,
-      "pnl": -300.8708248130133,
-      "trades": 3,
-      "lastAction": "買入 $17946 SOL @ $88.51",
+      "nav": 99792.20136937436,
+      "pnl": -207.79863062563527,
+      "trades": 4,
+      "lastAction": "買入 $13816 BNB @ $648.86",
       "badge": "bought"
     },
     "contra": {
@@ -85,6 +89,12 @@
     }
   },
   "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $13816 BNB @ $648.86 — 再平衡補倉 BNB，目前 0.0%",
+      "time": "2026-05-06T15:32:59.043Z"
+    },
     {
       "traderId": "quant",
       "type": "buy",
