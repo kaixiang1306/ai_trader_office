@@ -1,17 +1,103 @@
 {
-  "startedAt": null,
-  "lastTickAt": null,
-  "tickCount": 0,
-  "totalTrades": 0,
-  "priceSource": null,
-  "prices": {},
-  "prevPrices": {},
-  "accounts": {
-    "momentum": { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "value":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "degen":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "quant":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "contra":   { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" }
+  "startedAt": 1778073848073,
+  "lastTickAt": 1778074011889,
+  "tickCount": 3,
+  "totalTrades": 2,
+  "priceSource": "coingecko",
+  "prices": {
+    "AVAX": 9.65,
+    "BNB": 651.48,
+    "BTC": 81977,
+    "ADA": 0.269182,
+    "DOGE": 0.114892,
+    "ETH": 2385.37,
+    "XRP": 1.43,
+    "SOL": 88.73
   },
-  "logs": []
+  "prevPrices": {
+    "AVAX": 9.65,
+    "BNB": 651.48,
+    "BTC": 81977,
+    "ADA": 0.269182,
+    "DOGE": 0.114892,
+    "ETH": 2385.37,
+    "XRP": 1.43,
+    "SOL": 88.73
+  },
+  "accounts": {
+    "momentum": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "value": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "degen": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "quant": {
+      "cash": 64000,
+      "positions": {
+        "BTC": {
+          "amount": 0.2195737828903229,
+          "avgPrice": 81977
+        },
+        "ETH": {
+          "amount": 7.5459991531712065,
+          "avgPrice": 2385.37
+        }
+      },
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 2,
+      "lastAction": "買入 $18000 ETH @ $2,385.37",
+      "badge": "bought"
+    },
+    "contra": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    }
+  },
+  "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $18000 ETH @ $2385.37 — 再平衡補倉 ETH，目前 0.0%",
+      "time": "2026-05-06T13:26:51.889Z"
+    },
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $18000 BTC @ $81977.00 — 再平衡補倉 BTC，目前 0.0%",
+      "time": "2026-05-06T13:26:01.883Z"
+    },
+    {
+      "time": "2026-05-06T13:24:08.272Z",
+      "traderId": null,
+      "type": "info",
+      "msg": "首次取得價格 (來源: coingecko)，下個 tick 開始決策"
+    }
+  ]
 }
