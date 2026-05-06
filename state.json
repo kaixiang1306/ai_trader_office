@@ -1,10 +1,20 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778103417035,
-  "tickCount": 9,
+  "lastTickAt": 1778106484651,
+  "tickCount": 10,
   "totalTrades": 6,
   "priceSource": "coingecko",
   "prices": {
+    "AVAX": 9.58,
+    "BNB": 647.36,
+    "BTC": 81269,
+    "ADA": 0.266315,
+    "DOGE": 0.112207,
+    "ETH": 2345.83,
+    "XRP": 1.42,
+    "SOL": 89.12
+  },
+  "prevPrices": {
     "AVAX": 9.63,
     "BNB": 649.08,
     "BTC": 81483,
@@ -13,16 +23,6 @@
     "ETH": 2351.85,
     "XRP": 1.43,
     "SOL": 89.45
-  },
-  "prevPrices": {
-    "AVAX": 9.63,
-    "BNB": 651.44,
-    "BTC": 81603,
-    "ADA": 0.267186,
-    "DOGE": 0.113021,
-    "ETH": 2353.66,
-    "XRP": 1.43,
-    "SOL": 89.44
   },
   "accounts": {
     "momentum": {
@@ -76,8 +76,8 @@
           "avgPrice": 1.4258653448988021
         }
       },
-      "nav": 99881.53860661185,
-      "pnl": -118.46139338814828,
+      "nav": 99570.28185012368,
+      "pnl": -429.7181498763239,
       "trades": 6,
       "lastAction": "買入 $6770 XRP @ $1.42",
       "badge": "bought"
