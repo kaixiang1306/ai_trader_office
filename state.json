@@ -1,17 +1,73 @@
 {
-  "startedAt": null,
-  "lastTickAt": null,
-  "tickCount": 0,
+  "startedAt": 1778073848073,
+  "lastTickAt": 1778073848272,
+  "tickCount": 1,
   "totalTrades": 0,
-  "priceSource": null,
-  "prices": {},
+  "priceSource": "coingecko",
+  "prices": {
+    "AVAX": 9.66,
+    "BNB": 652.13,
+    "BTC": 82025,
+    "ADA": 0.269312,
+    "DOGE": 0.114818,
+    "ETH": 2387.18,
+    "XRP": 1.43,
+    "SOL": 88.68
+  },
   "prevPrices": {},
   "accounts": {
-    "momentum": { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "value":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "degen":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "quant":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
-    "contra":   { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" }
+    "momentum": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "value": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "degen": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "quant": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    },
+    "contra": {
+      "cash": 100000,
+      "positions": {},
+      "nav": 100000,
+      "pnl": 0,
+      "trades": 0,
+      "lastAction": "等待第一個 tick...",
+      "badge": "idle"
+    }
   },
-  "logs": []
+  "logs": [
+    {
+      "time": "2026-05-06T13:24:08.272Z",
+      "traderId": null,
+      "type": "info",
+      "msg": "首次取得價格 (來源: coingecko)，下個 tick 開始決策"
+    }
+  ]
 }
