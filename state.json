@@ -1,8 +1,8 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778073961883,
-  "tickCount": 2,
-  "totalTrades": 1,
+  "lastTickAt": 1778074011889,
+  "tickCount": 3,
+  "totalTrades": 2,
   "priceSource": "coingecko",
   "prices": {
     "AVAX": 9.65,
@@ -15,14 +15,14 @@
     "SOL": 88.73
   },
   "prevPrices": {
-    "AVAX": 9.66,
-    "BNB": 652.13,
-    "BTC": 82025,
-    "ADA": 0.269312,
-    "DOGE": 0.114818,
-    "ETH": 2387.18,
+    "AVAX": 9.65,
+    "BNB": 651.48,
+    "BTC": 81977,
+    "ADA": 0.269182,
+    "DOGE": 0.114892,
+    "ETH": 2385.37,
     "XRP": 1.43,
-    "SOL": 88.68
+    "SOL": 88.73
   },
   "accounts": {
     "momentum": {
@@ -53,17 +53,21 @@
       "badge": "idle"
     },
     "quant": {
-      "cash": 82000,
+      "cash": 64000,
       "positions": {
         "BTC": {
           "amount": 0.2195737828903229,
           "avgPrice": 81977
+        },
+        "ETH": {
+          "amount": 7.5459991531712065,
+          "avgPrice": 2385.37
         }
       },
       "nav": 100000,
       "pnl": 0,
-      "trades": 1,
-      "lastAction": "買入 $18000 BTC @ $81,977",
+      "trades": 2,
+      "lastAction": "買入 $18000 ETH @ $2,385.37",
       "badge": "bought"
     },
     "contra": {
@@ -77,6 +81,12 @@
     }
   },
   "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $18000 ETH @ $2385.37 — 再平衡補倉 ETH，目前 0.0%",
+      "time": "2026-05-06T13:26:51.889Z"
+    },
     {
       "traderId": "quant",
       "type": "buy",
