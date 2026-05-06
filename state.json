@@ -1,10 +1,20 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778073848272,
-  "tickCount": 1,
-  "totalTrades": 0,
+  "lastTickAt": 1778073961883,
+  "tickCount": 2,
+  "totalTrades": 1,
   "priceSource": "coingecko",
   "prices": {
+    "AVAX": 9.65,
+    "BNB": 651.48,
+    "BTC": 81977,
+    "ADA": 0.269182,
+    "DOGE": 0.114892,
+    "ETH": 2385.37,
+    "XRP": 1.43,
+    "SOL": 88.73
+  },
+  "prevPrices": {
     "AVAX": 9.66,
     "BNB": 652.13,
     "BTC": 82025,
@@ -14,7 +24,6 @@
     "XRP": 1.43,
     "SOL": 88.68
   },
-  "prevPrices": {},
   "accounts": {
     "momentum": {
       "cash": 100000,
@@ -44,13 +53,18 @@
       "badge": "idle"
     },
     "quant": {
-      "cash": 100000,
-      "positions": {},
+      "cash": 82000,
+      "positions": {
+        "BTC": {
+          "amount": 0.2195737828903229,
+          "avgPrice": 81977
+        }
+      },
       "nav": 100000,
       "pnl": 0,
-      "trades": 0,
-      "lastAction": "等待第一個 tick...",
-      "badge": "idle"
+      "trades": 1,
+      "lastAction": "買入 $18000 BTC @ $81,977",
+      "badge": "bought"
     },
     "contra": {
       "cash": 100000,
@@ -63,6 +77,12 @@
     }
   },
   "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $18000 BTC @ $81977.00 — 再平衡補倉 BTC，目前 0.0%",
+      "time": "2026-05-06T13:26:01.883Z"
+    },
     {
       "time": "2026-05-06T13:24:08.272Z",
       "traderId": null,
