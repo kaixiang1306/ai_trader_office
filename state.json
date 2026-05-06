@@ -1,0 +1,17 @@
+{
+  "startedAt": null,
+  "lastTickAt": null,
+  "tickCount": 0,
+  "totalTrades": 0,
+  "priceSource": null,
+  "prices": {},
+  "prevPrices": {},
+  "accounts": {
+    "momentum": { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
+    "value":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
+    "degen":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
+    "quant":    { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" },
+    "contra":   { "cash": 100000, "positions": {}, "nav": 100000, "pnl": 0, "trades": 0, "lastAction": "等待第一個 tick...", "badge": "idle" }
+  },
+  "logs": []
+}
