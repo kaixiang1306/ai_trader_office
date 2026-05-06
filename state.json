@@ -1,18 +1,18 @@
 {
   "startedAt": 1778073848073,
-  "lastTickAt": 1778074011889,
-  "tickCount": 3,
-  "totalTrades": 2,
+  "lastTickAt": 1778080340690,
+  "tickCount": 4,
+  "totalTrades": 3,
   "priceSource": "coingecko",
   "prices": {
-    "AVAX": 9.65,
-    "BNB": 651.48,
-    "BTC": 81977,
-    "ADA": 0.269182,
-    "DOGE": 0.114892,
-    "ETH": 2385.37,
-    "XRP": 1.43,
-    "SOL": 88.73
+    "AVAX": 9.57,
+    "BNB": 647.9,
+    "BTC": 81502,
+    "ADA": 0.266223,
+    "DOGE": 0.113065,
+    "ETH": 2359.32,
+    "XRP": 1.42,
+    "SOL": 88.51
   },
   "prevPrices": {
     "AVAX": 9.65,
@@ -53,7 +53,7 @@
       "badge": "idle"
     },
     "quant": {
-      "cash": 64000,
+      "cash": 46054.15674846634,
       "positions": {
         "BTC": {
           "amount": 0.2195737828903229,
@@ -62,12 +62,16 @@
         "ETH": {
           "amount": 7.5459991531712065,
           "avgPrice": 2385.37
+        },
+        "SOL": {
+          "amount": 202.75497968064238,
+          "avgPrice": 88.51
         }
       },
-      "nav": 100000,
-      "pnl": 0,
-      "trades": 2,
-      "lastAction": "買入 $18000 ETH @ $2,385.37",
+      "nav": 99699.12917518699,
+      "pnl": -300.8708248130133,
+      "trades": 3,
+      "lastAction": "買入 $17946 SOL @ $88.51",
       "badge": "bought"
     },
     "contra": {
@@ -81,6 +85,12 @@
     }
   },
   "logs": [
+    {
+      "traderId": "quant",
+      "type": "buy",
+      "msg": "買 $17946 SOL @ $88.51 — 再平衡補倉 SOL，目前 0.0%",
+      "time": "2026-05-06T15:12:20.690Z"
+    },
     {
       "traderId": "quant",
       "type": "buy",
