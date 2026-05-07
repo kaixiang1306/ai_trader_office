@@ -30,6 +30,16 @@
       --purple-dim: #aa66ff15;
       --teal: #00ddcc;
       --teal-dim: #00ddcc15;
+      --pink: #ff3399;
+      --pink-dim: #ff339915;
+      --orange: #ff7733;
+      --orange-dim: #ff773315;
+      --cyan: #33ccff;
+      --cyan-dim: #33ccff15;
+      --lime: #ccff33;
+      --lime-dim: #ccff3315;
+      --rose: #ff5577;
+      --rose-dim: #ff557715;
     }
 
     * {
@@ -381,6 +391,26 @@
       background: var(--teal);
     }
 
+    .trader-card.c5::before {
+      background: var(--pink);
+    }
+
+    .trader-card.c6::before {
+      background: var(--orange);
+    }
+
+    .trader-card.c7::before {
+      background: var(--cyan);
+    }
+
+    .trader-card.c8::before {
+      background: var(--lime);
+    }
+
+    .trader-card.c9::before {
+      background: var(--rose);
+    }
+
     .trader-card:hover {
       border-color: var(--border2);
     }
@@ -450,6 +480,36 @@
       background: var(--teal-dim);
       color: var(--teal);
       border: 1px solid var(--teal);
+    }
+
+    .av5 {
+      background: var(--pink-dim);
+      color: var(--pink);
+      border: 1px solid var(--pink);
+    }
+
+    .av6 {
+      background: var(--orange-dim);
+      color: var(--orange);
+      border: 1px solid var(--orange);
+    }
+
+    .av7 {
+      background: var(--cyan-dim);
+      color: var(--cyan);
+      border: 1px solid var(--cyan);
+    }
+
+    .av8 {
+      background: var(--lime-dim);
+      color: var(--lime);
+      border: 1px solid var(--lime);
+    }
+
+    .av9 {
+      background: var(--rose-dim);
+      color: var(--rose);
+      border: 1px solid var(--rose);
     }
 
     .trader-info {
@@ -670,6 +730,26 @@
       color: var(--teal);
     }
 
+    .log-who.c5 {
+      color: var(--pink);
+    }
+
+    .log-who.c6 {
+      color: var(--orange);
+    }
+
+    .log-who.c7 {
+      color: var(--cyan);
+    }
+
+    .log-who.c8 {
+      color: var(--lime);
+    }
+
+    .log-who.c9 {
+      color: var(--rose);
+    }
+
     .log-msg {
       color: var(--muted);
       word-break: break-word;
@@ -721,7 +801,7 @@
     <div class="header">
       <div class="header-left">
         <h1>CRYPTO<span>DESK</span></h1>
-        <p>// 5 AI 交易員 · 模擬倉 · 即時幣價</p>
+        <p>// 10 AI 交易員 · 模擬倉 · 即時幣價</p>
         <div class="live-badge"><span class="live-dot"></span>24H MARKET OPEN</div>
       </div>
       <div class="header-right">
@@ -819,13 +899,18 @@
     const COINS = ['BTC', 'ETH', 'SOL', 'BNB', 'XRP', 'DOGE', 'AVAX', 'ADA'];
     const REFRESH_MS = 30000;
 
-    // 跟 strategies.mjs 中的 metadata 對應（只用於渲染樣式 / 顏色）
+    // 跟 worker-bundled.js 中的 metadata 對應（只用於渲染樣式 / 顏色）
     const TRADERS = [
       { id: 'momentum', name: 'MOMENTUM', short: 'MOM', initials: 'MO', ci: 0, strategy: 'TREND FOLLOWER', desc: '追漲殺跌 · 動能策略' },
       { id: 'value', name: 'VALUE', short: 'VAL', initials: 'VA', ci: 1, strategy: 'VALUE INVESTOR', desc: '低買高賣 · 價值策略' },
       { id: 'degen', name: 'DEGEN', short: 'DEG', initials: 'DG', ci: 2, strategy: 'ALTCOIN HUNTER', desc: '高風險山寨 · 追漲策略' },
       { id: 'quant', name: 'QUANT', short: 'QNT', initials: 'QT', ci: 3, strategy: 'SYSTEMATIC', desc: '系統化 · 分散配置' },
       { id: 'contra', name: 'CONTRA', short: 'CTR', initials: 'CT', ci: 4, strategy: 'CONTRARIAN', desc: '逆向操作 · 抄底反彈' },
+      { id: 'scalper', name: 'SCALPER', short: 'SCP', initials: 'SC', ci: 5, strategy: 'HIGH FREQUENCY', desc: '高頻刮頭皮 · 微利策略' },
+      { id: 'swing', name: 'SWING', short: 'SWG', initials: 'SW', ci: 6, strategy: 'MA CROSSOVER', desc: '均線穿越 · 波段策略' },
+      { id: 'breakout', name: 'BREAKOUT', short: 'BRK', initials: 'BR', ci: 7, strategy: 'BREAKOUT', desc: '突破策略 · 順勢進場' },
+      { id: 'meanrev', name: 'MEANREV', short: 'MRV', initials: 'MR', ci: 8, strategy: 'MEAN REVERSION', desc: '均值回歸 · 反向操作' },
+      { id: 'dca', name: 'DCA', short: 'DCA', initials: 'DC', ci: 9, strategy: 'DOLLAR COST AVG', desc: '定期定額 · 長期累積' },
     ];
     const TRADER_BY_ID = Object.fromEntries(TRADERS.map(t => [t.id, t]));
 
@@ -911,7 +996,7 @@
         const pct = ((acct.pnl / INITIAL) * 100).toFixed(2);
         const sign = acct.pnl >= 0 ? '+' : '';
         const pnlCls = acct.pnl > 0 ? 'pos' : acct.pnl < 0 ? 'neg' : 'neu';
-        const rankMark = i === 0 ? '01' : i === 1 ? '02' : i === 2 ? '03' : i === 3 ? '04' : '05';
+        const rankMark = String(i + 1).padStart(2, '0');
         const rankCls = i === 0 ? 'rank-num gold' : 'rank-num';
         const cardCls = i === 0 ? `trader-card c${t.ci} rank1` : `trader-card c${t.ci}`;
         const badgeHtml = acct.badge === 'bought' ? '<span class="badge badge-bought">BUY</span>'
