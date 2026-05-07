@@ -1,85 +1,70 @@
 # Crypto Trader Office
 
-5 個 AI 交易員的紙上交易模擬。後端是 **GitHub Actions cron**，每 5 分鐘抓即時幣價跑一次決策；前端 **GitHub Pages** 純讀取 `state.json` 顯示。
+5 個 AI 交易員的紙上交易模擬。後端是 **Cloudflare Worker + KV**，cron 每 5 分鐘抓即時幣價跑一次決策；前端 **GitHub Pages** 從 Worker 讀 state 顯示。
 
 打開網頁就看得到目前進度，不需要你手動「開始交易」。
 
 ## 架構
 
 ```
-GitHub Actions (cron */5 * * * *)
+Cloudflare Worker (cron */5 * * * *)
         │
         ▼
-   tick.mjs ── fetch CoinGecko/Binance ──► 跑 5 個策略 ──► 寫 state.json ──► commit
-        │
-        ▼
-GitHub Pages (main branch root)
-        │
-        ▼
-index.html  ◄─── 每 30 秒 fetch state.json
+   抓 CoinGecko/Binance 幣價 ──► 跑 5 個策略 ──► 寫入 KV (state)
+                                                    │
+                                                    ▼
+                                          GET /state（HTTP endpoint）
+                                                    ▲
+                                                    │ 每 30 秒 fetch
+GitHub Pages ── index.html ─────────────────────────┘
 ```
 
 ## 檔案
 
 | 檔案 | 用途 |
 |---|---|
-| `index.html` | 前端 UI，純讀取 `state.json`（GitHub Pages 預設首頁） |
-| `strategies.mjs` | 5 個交易員的策略邏輯（純函數） |
-| `tick.mjs` | Actions 跑的 tick 腳本 |
-| `state.json` | 持久化狀態（每 tick 由 Actions 覆寫） |
-| `.github/workflows/trade.yml` | cron 排程 |
+| `index.html` | 前端 UI（GitHub Pages 首頁），fetch Worker 的 `/state` |
+| `worker-bundled.js` | Worker 的原始碼（本地保存版）。改策略時編輯這個檔，再貼回 Cloudflare 編輯器 |
 
-## 上線步驟
+## 部署
 
-1. **建 git repo 並推到 GitHub**
+### Cloudflare Worker（後端）
 
-   ```pwsh
-   cd "C:\Users\kai81\OneDrive\文件\ai_git\ai_trader_office"
-   git init
-   git add .
-   git commit -m "init: crypto trader office"
-   git branch -M main
-   git remote add origin https://github.com/<你的帳號>/<repo 名>.git
-   git push -u origin main
+純網頁後台操作，不用 CLI：
+
+1. **建 KV namespace**：Dashboard → Workers & Pages → KV → Create a namespace（名稱隨意，例如 `trader-state`）。
+2. **建 Worker**：Workers & Pages → Create → Create Worker → 取名（例如 `ai-trader-office`）→ Deploy。
+3. **貼程式碼**：Worker → Edit code → 把 `worker-bundled.js` 整個內容貼上 → Deploy。
+4. **綁 KV**：Worker → Settings → Bindings → Add → KV namespace。Variable name 必須是 `TRADER_KV`，namespace 選步驟 1 建的。
+5. **設 cron**：Worker → Settings → Triggers → Cron Triggers → Add → `*/5 * * * *`。
+
+驗證：開瀏覽器訪問 `https://<你的 worker>.workers.dev/state`，看到 JSON 即成功。
+
+### GitHub Pages（前端）
+
+1. repo Settings → Pages → Source 選 `main` branch、`/ (root)`。
+2. 編輯 `index.html` 找 `STATE_URL`，把它換成你的 Worker 網址：
+   ```js
+   const STATE_URL = 'https://<你的 worker>.workers.dev/state';
    ```
+3. push 到 main，Pages 會自動上線。
 
-2. **開 GitHub Pages**：repo Settings → Pages → Source 選 `main` branch、`/ (root)`、Save。
-   等 1 分鐘後網址會是 `https://<你的帳號>.github.io/<repo 名>/`（`index.html` 自動載入）
+## 改策略
 
-3. **開 Actions 寫入權限**：repo Settings → Actions → General → 「Workflow permissions」選 **Read and write permissions**。否則 workflow 沒法 push state.json。
+編輯 `worker-bundled.js` 中的 `TRADERS` 陣列，每個交易員的 `decide(prices, prevPrices, acct)` 回傳 `{ action: 'BUY'|'SELL'|'HOLD', coin, usd, price, reason }`。
 
-4. **手動觸發第一次 tick**（不想等 5 分鐘）：repo Actions → Trading Tick → Run workflow。
+改完之後：複製整個檔案內容 → 貼回 Cloudflare Worker 的 Edit code → Deploy。
 
-之後每 5 分鐘自動跑，網頁打開隨時看得到最新狀態。
+## 重置 state
 
-## 常見問題
+Cloudflare Dashboard → Workers & Pages → KV → 你的 namespace → 刪掉 `state` 這個 key。下個 tick 自動建初始狀態。
 
-**Q: state.json 一直 commit 進 main，repo 會不會變很肥？**
-會，每天 ~288 commits。可以接受。如果之後想清乾淨：
-- 改成把 state.json 推到一個 orphan branch（如 `state` branch）並 force push。前端改 fetch raw.githubusercontent.com。
-- 或定期 `git filter-branch` / GitHub 提供的 squash 工具清理。
+## 額度（Cloudflare 免費方案）
 
-**Q: cron 真的會準時每 5 分鐘嗎？**
-GitHub 對 schedule cron 不保證準點，有時會延遲 5–15 分鐘，高峰期可能整輪略過。對紙上交易夠用。
+- Worker 請求：100k/天（cron 每 5 分鐘 = 288/天 + 前端 fetch，輕鬆夠）
+- KV writes：1000/天（一天 288 寫，夠）
+- KV reads：100k/天
 
-**Q: free tier 額度？**
-- 公開 repo：Actions 完全免費
-- 私有 repo：每月 2000 分鐘，每次 tick 約 15 秒，288 次 × 15s × 30 天 ≈ 2160 分鐘，**會超過**。建議公開 repo。
+## 為什麼從 GitHub Actions 換成 Cloudflare
 
-**Q: 60 天沒人 push 會被停掉？**
-是的，GitHub 會自動停用無活動 repo 的 schedule workflow。tick 本身會 push，所以不會觸發停用。
-
-**Q: 想改策略？**
-編輯 `strategies.mjs` 裡的 `TRADERS` 陣列。每個交易員的 `decide(prices, prevPrices, acct)` 回傳 `{ action: 'BUY'|'SELL'|'HOLD', coin, usd, price, reason }`。
-
-**Q: 想重置？**
-刪掉 repo 的 `state.json`（或改回初始版本），下次 tick 會新建。
-
-## 本地測試
-
-```pwsh
-node tick.mjs       # 跑一次 tick，會更新 state.json
-# 然後用任何 static server 開 HTML，例如：
-python -m http.server 8000
-# 瀏覽器開 http://localhost:8000/
-```
+GitHub Actions 的 schedule cron **不保證準點**，常延遲 5–15 分鐘甚至整輪略過。Cloudflare cron triggers 準時很多，適合需要規律 tick 的紙上交易。
